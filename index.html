@@ -24,10 +24,54 @@
 <!--estilos por defecto-->
 <style>
 @import url("boostrap-icons.css");
-body {margin:0;}
+body {margin:0;
+background:-webkit-linear-gradient(left, blue, green);}
+.btn{
+	 background: linear-gradient(180deg, #FF00FF 0%, #306485 100%);
+	 border:0;
+	 margin-top:15px;
+	 font-weight: 2000;
+	 font-family:fantasy;
+
+}
+.btn:hover{
+	 background: linear-gradient(180deg, #CD5C5C 0%, #306485 100%);
+	 border:0;
+	 margin-top:15px;
+	 transition-duration: 1000ms;
+}
+#tanque img{
+	  display: block;
+margin-left: auto;
+margin-right: auto;
+}
 </style>
 
+<script >
+	
+	function muestra(){
+		var D=document.getElementById("parametro1")
+		var h=document.getElementById("parametro2")
+		/*var Q=document.getElementById("parametro3")*/
+		Df=parseFloat(D.value);
+		A=Math.pow(Df,2)*Math.PI/4;
+		/*Qf=parseFloat(Q.value);*/
+		
 
+		
+
+		/*EC=Math.pow(V,2)/(2*9.81);*/
+
+		hf=parseFloat(h.value);
+		EC=hf*2*9.81;
+
+		V=Math.pow(EC,0.5);
+		Qf=V*A;
+		Re=Df*V*1000/0.00102;
+
+		parametro3.value=Qf;
+	}
+</script>
 </head>
 
 <body class="bg-warning user-select-none" onblur="" id="body">
@@ -35,34 +79,41 @@ body {margin:0;}
 
 
   <div class=" ui w-50  modal-body overflow-auto shadow border-secondary rounded float-left   p-2" style=" font-size:25px; margin-top:10%;">
-
-quiero calcular
+<div>
+Que tipo de tuberia estas usando
 <select>
 <option>1</option>
 <option>2</option>
 <option>3</option>
 <option>...</option>
 </select>
+</div>
+
+Diametro
+<input  class="form-control" type="text" id="parametro1">
+
+Altura de tanque
+<input type="text" class="form-control" id="parametro2">
+
+Caudal
+<input type="text" class="form-control " id="parametro3" >
 
 
-parametro 1
-<input  class="form-control" type="text">
-
-parametro 4
-<input type="text" class="form-control">
-
-parametro 3
-<input type="text" class="form-control " >
-
-
-<button class="btn btn-warning">Calcular caudal</button>
+<button class="btn" onclick="muestra()">Calcular caudal</button>
 <br>
+<div>
+<span>h1+V1/2g+P1/g*d=h2+V2/2g+P2/g*d</span>
+</div>
+
+
 
 <h1>Resultado</h1>
   <div>
 
 
-< </center>
-
+ </center>
+<div id="tanque">
+	<img src="https://sswm.info/sites/default/files/factsheet_icons/Tanque%20de%20almacenamiento.jpg" height="200">
+</div>
   </body>
 </html>
